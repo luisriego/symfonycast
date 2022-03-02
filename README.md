@@ -6,6 +6,8 @@ This repository contains the basic configuration to run Symfony applications wit
 - PHP container running version 8.1.1
 - MySQL container running version 8.0.26
 
+Replace all the occorrencies of the "symfony-" string by the name of the app to develop with the hiffen, ex. "my-app-"
+
 ## Instructions
 - `make build` to build the containers
 - `make start` to start the containers
