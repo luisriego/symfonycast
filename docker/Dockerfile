@@ -32,6 +32,18 @@ RUN wget https://get.symfony.com/cli/installer -O - | bash
 USER root
 RUN mv /home/appuser/.symfony/bin/symfony /usr/local/bin/symfony
 
+# Install PHP-CS-FIXER
+RUN wget https://cs.symfony.com/download/php-cs-fixer-v3.phar -O php-cs-fixer
+RUN chmod a+x php-cs-fixer
+RUN mv php-cs-fixer /usr/local/bin/php-cs-fixer
+
+# Install NODE 14 and Yarn
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt -y install nodejs
+RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt update && apt install yarn
+
 RUN mkdir -p /appdata/www
 
 # Config XDEBUG
